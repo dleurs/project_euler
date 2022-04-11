@@ -50,3 +50,44 @@ def is_prime(nb):
     return True
 
 #print(prime_factors(600851475143)[-1])
+
+# 4 
+
+def is_palindrome(nb):
+    strNb = str(nb)
+    start = 0
+    end = len(strNb) - 1
+    while (start < end):
+        if (strNb[start] != strNb[end]):
+            return False
+        start += 1
+        end -= 1
+    return True
+
+def largest_palindrome_prod(startProd = 700):
+    largest_palindrom_prod = 9009
+    for i in range(startProd, 999):
+        for j in range(startProd, 999):
+            prod = i * j 
+            if (prod > largest_palindrom_prod and is_palindrome(prod)):
+                largest_palindrom_prod = prod
+    return largest_palindrom_prod
+
+#print(largest_palindrome_prod())
+
+# 5
+
+def is_divideable_by_all(nb, limit = 20):
+    for divider in range(2,limit + 1):
+        if (nb % divider != 0):
+            return False
+    return True
+    
+
+def smallest_multiple():
+    max =  1*2*3*4*5*6*7*8*9*10*11*12*13*14*15*16*17*18*19*20
+    for nb in range(20, max + 1, 20):
+        if (is_divideable_by_all(nb)):
+            return nb
+
+#print(smallest_multiple())
