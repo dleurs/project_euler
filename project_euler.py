@@ -1,7 +1,10 @@
 import math
+# pip install typeguard mypy
+from typeguard import check_argument_types, check_return_type
+# from typing import List
 
 # 1
-def sum_multiple_3_5():
+def sum_multiple_3_5() -> int:
     sum = 0
     for i in range(3,1000+1):
         if (i % 3 == 0 or i % 5 == 0):
@@ -12,7 +15,8 @@ def sum_multiple_3_5():
 
 
 # 2
-def even_fibonacci(first = 1, second = 2):
+def even_fibonacci(first: int = 1, second:int = 2) -> int:
+    assert check_argument_types()
     a = first
     b = second
     sum = 0
@@ -22,9 +26,12 @@ def even_fibonacci(first = 1, second = 2):
         b = c 
         if (a % 2 == 0):
             sum += a 
+    
+    assert check_return_type(sum)
     return sum;
 
-#print(even_fibonacci())
+check_argument_types()
+print(even_fibonacci())
 
 # 3
 def prime_factors(nb):
@@ -91,3 +98,5 @@ def smallest_multiple():
             return nb
 
 #print(smallest_multiple())
+
+# 6
